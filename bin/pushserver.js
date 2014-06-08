@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 /**
- * Created with JetBrains WebStorm.
- * User: smile
- * Date: 14/06/13
- * Time: 15:45
- * To change this template use File | Settings | File Templates.
+ * revised by Lei Niu 2014/06/08
  */
 
 var config = require('../lib/Config'),
@@ -22,13 +18,16 @@ var configPath = program.config;
 if (configPath) {
     configPath = configPath.indexOf('/') === 0 ? configPath : path.join(process.cwd(), configPath);
     if (!fs.existsSync(configPath)) {
-        console.log('The configuration file doesn\'t exist.');
+    	var meta = '[' + (new Date()).toISOString()+ ']:The configuration file doesn\'t exist.';
+        console.log(meta);
         return program.outputHelp();
     }
 } else {
-    console.log('You must provide a configuration file.');
+		var meta = '[' + (new Date()).toISOString()+ ']:You must provide a configuration file.';
+		console.log(meta);
     return program.outputHelp();
 }
 
 config.initialize(configPath);
+console.log('[' + (new Date()).toISOString()+ ']:todo-server start...');
 web.start();
