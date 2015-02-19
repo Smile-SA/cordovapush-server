@@ -22,3 +22,9 @@ node_modules
 Icon?
 ehthumbs.db
 Thumbs.db
+
+cert/
+*.sublime-project
+*.sublime-workspace
+
+atlassian-ide-plugin.xml
