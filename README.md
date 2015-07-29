@@ -3,6 +3,8 @@
 Push Server is a cross-plateform push server based on [node-apn](https://github.com/argon/node-apn) and [node-gcm](https://github.com/ToothlessGear/node-gcm). Push Server currently supports iOS (APN) and android (GCM) platforms. It uses mongoDB to store the push tokens. 
 Note that this server is not meant to be used as a front facing server as there's no particular security implemented.
 
+This is a fork of the original node-pushserver by 'Smile-SA' (https://github.com/Smile-SA/node-pushserver). I implemented a basic security-key system to protect the system from unauthorized use.
+
 [![NPM](https://nodei.co/npm/node-pushserver.png?downloads=true&stars=true)](https://nodei.co/npm/node-pushserver/)
 
 ## Getting started
@@ -39,6 +41,8 @@ If you checked out this project from github, you can find a configuration file e
 	"webPort": 8000,
 
     "mongodbUrl": "mongodb://username:password@localhost/database",
+
+    "securitykey": "YOUR_CUSTOM_SECURITY_KEY",
 
     "gcm": {
         "apiKey": "YOUR_API_KEY_HERE"
@@ -125,7 +129,8 @@ http://domain:port/send (POST)
     "badge": 0,
     "alert": "Your message here",
     "sound": "soundName"
-  }
+  },
+  "securitykey": "YOUR_CUSTOM_SECURITY_KEY"
 }
 ```
 
@@ -163,7 +168,8 @@ http://domain:port/sendBatch (POST)
         }
       }
     }
-  ]
+  ],
+  "securitykey": "YOUR_CUSTOM_SECURITY_KEY"
 }
 ```
 
@@ -178,7 +184,8 @@ http://domain:port/subscribe (POST)
 {
   "user":"user1",
   "type":"android",
-  "token":"CAFEBABE"
+  "token":"CAFEBABE",
+  "securitykey": "YOUR_CUSTOM_SECURITY_KEY"
 }
 ```
 + All field are required
@@ -193,13 +200,15 @@ http://domain:port/unsubscribe (POST)
 + Format:
 ```js
 {
-  "token":"CAFEBABE"
+  "token":"CAFEBABE",
+  "securitykey": "YOUR_CUSTOM_SECURITY_KEY"
 }
 ```
 or
 ```js
 {
-  "user":"user1"
+  "user":"user1",
+  "securitykey": "YOUR_CUSTOM_SECURITY_KEY"
 }
 ```
 

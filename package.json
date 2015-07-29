@@ -1,11 +1,12 @@
 {
   "name": "node-pushserver",
   "version": "0.5.4",
-  "description": "Cross-platform Push Notifications. A project providing a generic API to push messages using Apple's APN and Google's GCM services.",
+  "description": "Cross-platform Push Notifications. A project providing a generic API to push messages using Apple's APN, Google's GCM services, and Microsoft's Push Notification service",
   "keywords": [
     "push",
     "gcm",
     "apn",
+    "mpns",
     "mongodb"
   ],
   "dependencies": {
@@ -13,6 +14,7 @@
     "node-gcm": "~0.9.6",
     "lodash": "~1.3.1",
     "apn": "~1.3.4",
+    "mpns": "~2.1.0",
     "express": "~3.2.6",
     "commander": "2.7.1"
   },
@@ -26,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Smile-SA/node-pushserver.git"
+    "url": "git://github.com/turbofandude/node-pushserver.git"
   },
-  "bugs": "https://github.com/Smile-SA/node-pushserver/issues"
+  "bugs": "https://github.com/turbofandude/node-pushserver/issues"
 }
