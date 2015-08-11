@@ -1,4 +1,12 @@
 {
+
+    "useAuth": true,
+
+    "basicAuth": {
+        "user": "admin",
+        "pass": "admin"
+    },
+
     "webPort": 8000,
 
     "mongodbUrl": "mongodb://username:password@localhost/database",
