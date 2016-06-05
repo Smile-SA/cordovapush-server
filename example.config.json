@@ -7,6 +7,11 @@
         "apiKey": "YOUR_API_KEY_HERE"
     },
 
+    "adm": {
+        "client_id": "YOUR_API_KEY_HERE",
+        "client_secret": "YOUR_API_KEY_HERE"
+    },
+
     "apn": {
         "connection": {
             "gateway": "gateway.sandbox.push.apple.com",
