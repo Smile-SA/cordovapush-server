@@ -1,6 +1,6 @@
 # Push Server
 
-Push Server is a cross-plateform push server based on [node-apn](https://github.com/argon/node-apn) and [node-gcm](https://github.com/ToothlessGear/node-gcm). Push Server currently supports iOS (APN) and android (GCM) platforms. It uses mongoDB to store the push tokens. 
+Push Server is a cross-plateform push server based on [node-apn](https://github.com/argon/node-apn), [node-gcm](https://github.com/ToothlessGear/node-gcm) and [node-adm](https://github.com/umano/node-adm). Push Server currently supports iOS (APN), android (GCM) and amazon (ADM) platforms. It uses mongoDB to store the push tokens.
 Note that this server is not meant to be used as a front facing server as there's no particular security implemented.
 
 [![NPM](https://nodei.co/npm/node-pushserver.png?downloads=true&stars=true)](https://nodei.co/npm/node-pushserver/)
@@ -44,6 +44,11 @@ If you checked out this project from github, you can find a configuration file e
         "apiKey": "YOUR_API_KEY_HERE"
     },
 
+    "adm": {
+        "client_id": "YOUR_CLIENT_ID_HERE",
+        "client_secret": "YOUR_CLIENT_SECRET_HERE"
+    },
+
     "apn": {
         "connection": {
             "gateway": "gateway.sandbox.push.apple.com",
@@ -63,6 +68,8 @@ If you checked out this project from github, you can find a configuration file e
 ```
 
 + Checkout [GCM documentation](http://developer.android.com/guide/google/gcm/gs.html) to get your API key.
+
++ Read [ADM documentation](https://developer.amazon.com/public/apis/engage/device-messaging/tech-docs/02-obtaining-adm-credentials) to get your Client Credentials.
 
 +  Read [Apple's Notification guide](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Introduction.html) to know how to get your certificates for APN.
 
@@ -121,6 +128,12 @@ http://domain:port/send (POST)
       "message": "Your message here"
     }
   },
+  "amazon": {
+    "collapseKey": "optional",
+    "data": {
+      "message": "Your message here"
+    }
+  },
   "ios": {
     "badge": 0,
     "alert": "Your message here",
@@ -130,7 +143,7 @@ http://domain:port/send (POST)
 ```
 
 + "users" is optionnal, but must be an array if set. If not defined, the push message will be sent to every user (filtered by target).
-+ You can send push messages to Android or iOS devices, or both, by using the "android" and "ios" fields with appropriate options. See GCM and APN documentation to find the available options. 
++ You can send push messages to Android, Amazon or iOS devices, or both, by using the "android", "amazon" and "ios" fields with appropriate options. See GCM, ADM and APN documentation to find the available options.
 
 #### Send push notifications
 ```
@@ -144,6 +157,12 @@ http://domain:port/sendBatch (POST)
   "notifications": [{
       "users": ["user1", "user2"],
       "android": {
+        "collapseKey": "optional",
+        "data": {
+          "message": "Your message here"
+        }
+      },
+      "amazon": {
         "collapseKey": "optional",
         "data": {
           "message": "Your message here"
@@ -182,7 +201,7 @@ http://domain:port/subscribe (POST)
 }
 ```
 + All field are required
-+ "type" can be either "android" or "ios"
++ "type" can be either "android", "amazon" or "ios"
 + A user can be linked to several devices and a device can be linked to serveral users.
 
 #### Unsubscribe
@@ -241,6 +260,7 @@ http://domain:port/users/{user}/associations (GET)
 
   * [node-apn](https://github.com/argon/node-apn)
   * [node-gcm](https://github.com/ToothlessGear/node-gcm)
+  * [node-adm](https://github.com/umano/node-adm)
   * [express](https://github.com/visionmedia/express)
   * [mongoose](https://github.com/LearnBoost/mongoose)
   * [lodash](https://github.com/bestiejs/lodash.git )
