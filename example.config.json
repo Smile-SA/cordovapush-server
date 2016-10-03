@@ -1,5 +1,7 @@
 {
     "webPort": 8000,
+    
+    "webHostname": "localhost",
 
     "mongodbUrl": "mongodb://username:password@localhost/database",
 
