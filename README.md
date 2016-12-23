@@ -124,7 +124,8 @@ http://domain:port/send (POST)
   "ios": {
     "badge": 0,
     "alert": "Your message here",
-    "sound": "soundName"
+    "sound": "soundName",
+    "contentAvailable": 1
   }
 }
 ```
