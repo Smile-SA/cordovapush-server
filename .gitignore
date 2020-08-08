@@ -1,6 +1,7 @@
 # Project specific #
 ####################
 config.json
+launnch.json
 certificates
 
 # Node specific #
@@ -22,3 +23,4 @@ node_modules
 Icon?
 ehthumbs.db
 Thumbs.db
+*.log

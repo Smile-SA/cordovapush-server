@@ -42,7 +42,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="offset2 span8">
+        <div class="offset1 span10">
 
             <form id="pushForm" class="well form-horizontal" action="" method="POST">
                 <fieldset>
@@ -58,7 +58,31 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend>Android</legend>
+                    <legend>FCM</legend>
+
+                    <div class="control-group">
+                        <label class="control-label" for="fcmOptions">Payload: </label>
+
+                        <div class="controls">
+                            <textarea id="fcmOptions" name="fcmOptions" class="json-textarea source input-xlarge">
+{
+    "collapse_key": "optional",
+    "data": {
+        "your_custom_data_key": "your_custom_data_value"
+    },
+    "notification": {
+        "title": "Testing Node Title1",
+        "body": "Testing Node Body1"
+    }
+}
+                            </textarea>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>GCM</legend>
 
                     <div class="control-group">
                         <label class="control-label" for="androidOptions">Payload: </label>
@@ -93,6 +117,65 @@
                         </div>
                     </div>
                 </fieldset>
+
+                <fieldset>
+                    <legend>Baidu</legend>
+
+                    <div class="control-group">
+                        <label class="control-label" for="baiduOptions">Payload: </label>
+
+                        <div class="controls">
+                            <textarea id="baiduOptions" name="baiduOptions" class="json-textarea source input-xlarge">
+{
+    "title": "Baidu Title",
+    "description": "Baidu Description"
+}
+                            </textarea>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Getui</legend>
+
+                    <div class="control-group">
+                        <label class="control-label" for="getuiOptions">Payload: </label>
+
+                        <div class="controls">
+                            <textarea id="getuiOptions" name="getuiOptions" class="json-textarea source input-xlarge">
+{
+    "transmissionType": 1,
+    "transmissionContent": "Getui Message"
+}
+                            </textarea>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Pushy</legend>
+
+                    <div class="control-group">
+                        <label class="control-label" for="pushyOptions">Payload: </label>
+
+                        <div class="controls">
+                            <textarea id="pushyOptions" name="pushyOptions" class="json-textarea source input-xlarge">
+{
+    "data" : {
+        "title": "Pushy Title",
+        "body": "Pushy Message"
+    },
+    "options": {
+        "content_available": true
+    }
+}
+                            </textarea>
+                        </div>
+                    </div>
+
+                </fieldset>                
 
                 <input class="btn btn-danger" style="width: 100%;" id="sendPush" type="submit" value="Send!"/>
             </form>
@@ -184,11 +267,23 @@
             if(formValues.users)
                 pushNotification.users = [].concat(formValues.users);
 
+            if(isJSON(formValues.fcmOptions))
+                pushNotification.fcm= JSON.parse(formValues.fcmOptions);
+
             if(isJSON(formValues.androidOptions))
                 pushNotification.android= JSON.parse(formValues.androidOptions);
 
             if(isJSON(formValues.iosOptions))
                 pushNotification.ios= JSON.parse(formValues.iosOptions);
+
+            if(isJSON(formValues.baiduOptions))
+                pushNotification.baidu= JSON.parse(formValues.baiduOptions);
+
+            if(isJSON(formValues.getuiOptions))
+                pushNotification.getui= JSON.parse(formValues.getuiOptions);
+
+            if(isJSON(formValues.pushyOptions))
+                pushNotification.pushy= JSON.parse(formValues.pushyOptions);
 
             $.ajax({
                 url: 'send',

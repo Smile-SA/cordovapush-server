@@ -4,29 +4,34 @@
   "description": "Cross-platform Push Notifications. A project providing a generic API to push messages using Apple's APN and Google's GCM services.",
   "keywords": [
     "push",
+    "fcm",
     "gcm",
     "apn",
     "mongodb"
   ],
   "dependencies": {
-    "mongoose": "~3.6.11",
-    "node-gcm": "~0.13.0",
-    "lodash": "~1.3.1",
     "apn": "~1.7.5",
+    "commander": "2.7.1",
     "express": "~3.2.6",
-    "commander": "2.7.1"
+    "lodash": "~1.3.1",
+    "log4js": "^4.1.0",
+    "mongoose": "~3.6.11",
+    "node-baidu-push": "^0.1.5",
+    "node-gcm": "~0.13.0",
+    "node-getui": "^0.2.1",
+    "pushy": "^2.0.5"
   },
   "bin": {
     "pushserver": "./bin/pushserver.js"
   },
   "main": "./lib/PushController.js",
   "scripts": {
-"start": "node ./bin/pushserver.js",
+    "start": "node ./bin/pushserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Smile-SA/node-pushserver.git"
+    "url": "git://github.com/ctsdickson/node-pushserver.git"
   },
-  "bugs": "https://github.com/Smile-SA/node-pushserver/issues"
+  "bugs": "https://github.com/ctsdickson/node-pushserver.git/issues"
 }

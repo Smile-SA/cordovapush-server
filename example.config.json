@@ -1,11 +1,32 @@
 {
-    "webPort": 8000,
+    "webPort": 8002,
 
     "mongodbUrl": "mongodb://username:password@localhost/database",
+
+    "fcm": {
+        "apiKey": "YOUR_API_KEY_HERE"
+    },
 
     "gcm": {
         "apiKey": "YOUR_API_KEY_HERE"
     },
+
+    "baidu": {
+        "apiKey": "YOUR_API_KEY_HERE",
+        "secretKey": "YOUR_SECRET_KEY_HERE",
+        "msg_type": 1
+    },
+
+    "getui": {
+        "host": "http://sdk.open.api.igexin.com/apiex.htm",
+        "appId": "YOUR_API_ID_HERE",
+        "appKey": "YOUR_APP_KEY_HERE",
+        "masterSecret": "YOUR_MASTER_SECRET_HERE"
+    },
+
+    "pushy": {
+        "apiKey": "YOUR_API_KEY_HERE"
+      },
 
     "apn": {
         "connection": {
